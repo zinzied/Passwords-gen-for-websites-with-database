@@ -13,7 +13,7 @@ This project is a Password Manager application built using Python and PyQt5. The
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/yourusername/Passwords-gen-for-websites-with-database.git
+    git clone https://github.com/zinzied/Passwords-gen-for-websites-with-database.git
     cd Passwords-gen-for-websites-with-database
     ```
 
