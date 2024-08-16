@@ -39,7 +39,40 @@ This project is a Password Manager application built using Python and PyQt5. The
 3. **Save Passwords**:
     - After generating a password, click on "Save Password" to store it in the SQLite database.
     - If the website already exists in the database, the password will be updated.
+    - After make passwords you can shows them by open :
+    ```sh
+    python db.py
+    ```
 
+4. **User Interface (UI) Setup:**
+   - The main window is set up with a title "Password Manager" and a specific size.
+   - The UI includes a label, a list box to display saved passwords, a search entry field, and buttons for searching and showing all passwords.
+
+5. **Password Display:**
+   - The `show_passwords` method prompts the user to enter a predefined PIN. If the PIN is correct, it connects to an SQLite database (`passwords.db`), fetches all saved passwords, and displays them in the list box.
+   - If the PIN is incorrect, a warning message is shown.
+
+4. **Password Search:**
+   - The `search_passwords` method allows the user to search for passwords by website. It connects to the SQLite database, fetches rows that match the search term, and displays the results in the list box.
+
+5. **Context Menu for Copying Passwords:**
+   - The list box supports a context menu that appears on right-click. This menu includes an option to copy the selected password to the clipboard.
+   - The `copy_password` method extracts the password from the selected list item and copies it to the system clipboard.
+
+8. **Database Interaction:**
+   - The application interacts with an SQLite database named `passwords.db`. It assumes the database has a table named `passwords` with columns for website and different types of passwords (strong, medium, hard).
+
+9. **Security:**
+   - A predefined PIN is used to restrict access to the full list of passwords.
+
+Here is a high-level summary of the main components:
+
+- **Imports:** Necessary modules from PyQt5 and sqlite3.
+- **Constants:** A predefined PIN for verification.
+- **PasswordManager Class:** The main class that sets up the UI and handles interactions.
+- **Main Execution Block:** Initializes the application, applies the dark theme, and starts the event loop.
+
+This code provides a basic but functional password manager with a graphical interface, search functionality, and clipboard integration for copying passwords.
 ### Modules
 
 - **strong.py**: Contains the function `generate_strong_password` to generate strong passwords.
