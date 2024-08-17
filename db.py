@@ -6,7 +6,7 @@ from PyQt5.QtCore import Qt
 # Predefined PIN for verification
 PREDEFINED_PIN = "1234"
 
-class PasswordManager(QWidget):
+class DatabaseManager(QWidget):
     def __init__(self):
         super().__init__()
 
@@ -15,7 +15,44 @@ class PasswordManager(QWidget):
     def initUI(self):
         self.setWindowTitle('Password Manager')
         self.setGeometry(200, 200, 700, 600)  # Set the window size
-        self.setStyleSheet("font-size: 18px;")
+        self.setStyleSheet("""
+            QWidget {
+                background-color: #2b2b2b;
+                color: #ffffff;
+                font-size: 18px;
+            }
+            QLabel {
+                color: #ffffff;
+            }
+            QLineEdit {
+                background-color: #3c3c3c;
+                color: #ffffff;
+                border: 1px solid #555555;
+                padding: 5px;
+            }
+            QListWidget {
+                background-color: #3c3c3c;
+                color: #ffffff;
+                border: 1px solid #555555;
+            }
+            QInputDialog, QMessageBox {
+                background-color: #3c3c3c;
+                color: #ffffff;
+                border: 1px solid #555555;
+            }
+            QPushButton {
+                background-color: #555555;
+                color: #ffffff;
+                border: 1px solid #555555;
+                padding: 5px;
+            }
+            QPushButton:hover {
+                background-color: #666666;
+            }
+            QPushButton:pressed {
+                background-color: #777777;
+            }
+        """)
 
         self.layout = QVBoxLayout()
 
@@ -138,6 +175,6 @@ if __name__ == '__main__':
     """
     app.setStyleSheet(dark_stylesheet)
 
-    ex = PasswordManager()
+    ex = DatabaseManager()
     ex.show()
     sys.exit(app.exec_())
