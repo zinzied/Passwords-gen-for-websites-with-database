@@ -4,7 +4,7 @@ from PyQt5.QtGui import QClipboard
 from PyQt5.QtCore import Qt
 
 # Predefined PIN for verification
-PREDEFINED_PIN = "1234" #here set your pin to can show the passwords saved in database 
+PREDEFINED_PIN = "1234" # here set your pin to can show the passwords saved in database 
 
 class DatabaseManager(QWidget):
     def __init__(self):
