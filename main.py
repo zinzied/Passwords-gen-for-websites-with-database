@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButto
 from strong import generate_strong_password
 from medium import generate_medium_password
 from hard import generate_hard_password  # Assuming you have a module named 'hard' for generating hard passwords
+from db import DatabaseManager  # Import DatabaseManager from db.py
 
 class PasswordManager(QWidget):
     def __init__(self):
@@ -13,7 +14,34 @@ class PasswordManager(QWidget):
     def initUI(self):
         self.setWindowTitle('Password Manager')
         self.setGeometry(200, 200, 600, 400)
-        self.setStyleSheet("font-size: 18px;") 
+        self.setStyleSheet("""
+            QWidget {
+                background-color: #2b2b2b;
+                color: #ffffff;
+                font-size: 18px;
+            }
+            QLabel {
+                color: #ffffff;
+            }
+            QLineEdit {
+                background-color: #3c3c3c;
+                color: #ffffff;
+                border: 1px solid #555555;
+                padding: 5px;
+            }
+            QPushButton {
+                background-color: #555555;
+                color: #ffffff;
+                border: 1px solid #555555;
+                padding: 5px;
+            }
+            QPushButton:hover {
+                background-color: #666666;
+            }
+            QPushButton:pressed {
+                background-color: #777777;
+            }
+        """)
 
         self.layout = QVBoxLayout()
 
@@ -44,6 +72,10 @@ class PasswordManager(QWidget):
         self.save_button = QPushButton('Save Password', self)
         self.save_button.clicked.connect(self.save_password)
         self.layout.addWidget(self.save_button)
+
+        self.manage_db_button = QPushButton('Manage Database', self)
+        self.manage_db_button.clicked.connect(self.open_database_manager)
+        self.layout.addWidget(self.manage_db_button)
 
         self.setLayout(self.layout)
 
@@ -99,6 +131,10 @@ class PasswordManager(QWidget):
 
         # Close the connection
         conn.close()
+
+    def open_database_manager(self):
+        self.db_manager = DatabaseManager()
+        self.db_manager.show()
 
 if __name__ == '__main__':
     import sys
